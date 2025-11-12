@@ -27,11 +27,10 @@ public class LibroAutor {
         this.idAutor = idAutor;
     }
 
-    @Override
     public String toString() {
-        return "LibroAutor{" +
-                "idLibro=" + idLibro +
-                ", idAutor=" + idAutor +
-                '}';
+        return String.format("Libro_Autor[ id de libro=%d, id de autor=%d ]",
+                idLibro,
+                idAutor
+        );
     }
 }

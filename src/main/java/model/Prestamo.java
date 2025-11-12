@@ -1,4 +1,33 @@
 package model;
 
 public class Prestamo {
+    private int id;
+    private String fechaInicio;
+    private String fechaFin;
+
+    public Prestamo(int id, String fechaInicio, String fechaFin) {
+        this.id = id;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public String getFechaFin() {
+        return fechaFin;
+    }
+
+    public String toString() {
+        return String.format("Prestamo[ id=%d, fecha de inicio=%s, fecha de fin=%s ]",
+                id,
+                fechaInicio,
+                fechaFin
+        );
+    }
 }
