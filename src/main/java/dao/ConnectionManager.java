@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConnectionManager {
     public ConnectionManager() {}
 
-    public Connection devolverConnection(String baseDeDatos) {
+    public static Connection devolverConnection(String baseDeDatos) {
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/" + baseDeDatos, "root", "");
             if (baseDeDatos.equalsIgnoreCase("")) {
