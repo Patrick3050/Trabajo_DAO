@@ -17,6 +17,14 @@ public class Autor {
         return nombre;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String toString() {
         return String.format("Autor[ id=%d, nombre=%s ]",
                 id,

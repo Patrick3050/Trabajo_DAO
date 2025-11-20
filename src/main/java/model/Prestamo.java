@@ -23,6 +23,18 @@ public class Prestamo {
         return fechaFin;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setFechaInicio(String fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(String fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
     public String toString() {
         return String.format("Prestamo[ id=%d, fecha de inicio=%s, fecha de fin=%s ]",
                 id,

@@ -23,6 +23,18 @@ public class Libro {
         return isbn;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
     public String toString() {
         return String.format("Libro[ id=%d, titulo=%s, isbn=%s ]",
                 id,
