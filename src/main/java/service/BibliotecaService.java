@@ -3,7 +3,6 @@ package service;
 import dao.Interfaces.*;
 import model.*;
 
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -213,16 +212,26 @@ public class BibliotecaService {
     public void insertarPrestamo() {
         try {
             System.out.println("== Insertar Prestamo ==");
-            System.out.print("Ingresa el fechaInicio del Prestamo: ");
+            System.out.print("Ingresa la fechaInicio del Prestamo: ");
             String fechaInicio = sc.nextLine().trim();
-            System.out.print("Ingresa el fechaFin del Prestamo: ");
+
+            System.out.print("Ingresa la fechaFin del Prestamo: ");
             String fechaFin = sc.nextLine().trim();
-            Prestamo prestamo = new Prestamo(0, fechaInicio, fechaFin);
+
+            System.out.print("Ingresa el usuarioId del Prestamo: ");
+            int usuarioId = Integer.parseInt(sc.nextLine().trim());
+
+            System.out.print("Ingresa el libroId del Prestamo: ");
+            int libroId = Integer.parseInt(sc.nextLine().trim());
+
+            Prestamo prestamo = new Prestamo(0, fechaInicio, fechaFin, usuarioId, libroId);
             prestamoDAO.addPrestamo(prestamo);
+
         } catch (Exception e) {
-            System.err.println("Préstamo no agregado.");
+            System.err.println("Prestamo no insertado.");
         }
     }
+
 
     public void mostrarPrestamos() {
         try {
@@ -232,9 +241,10 @@ public class BibliotecaService {
                 System.out.println(prestamo);
             }
         } catch (Exception e) {
-            System.err.println("Préstamos no encontrados.");
+            System.err.println("Prestamos no mostrados.");
         }
     }
+
 
     public void eliminarPrestamo() {
         try {
@@ -252,8 +262,8 @@ public class BibliotecaService {
         try {
             System.out.println("== Actualizar Prestamo ==");
             System.out.print("Ingresa el id del prestamo a actualizar: ");
-            String idAux = sc.nextLine().trim();
-            int id = Integer.parseInt(idAux);
+            int id = Integer.parseInt(sc.nextLine().trim());
+
             Prestamo prestamo = prestamoDAO.getPrestamoById(id);
 
             System.out.println("¿Que campo deseas actualizar?");
@@ -270,19 +280,21 @@ public class BibliotecaService {
                     prestamoDAO.updatePrestamoFechaInicio(prestamo);
                 }
                 break;
+
                 case "2": {
                     System.out.print("Ingresa el nuevo fechaFin del prestamo: ");
                     String fechaFin = sc.nextLine().trim();
                     prestamo.setFechaFin(fechaFin);
-                    prestamoDAO.updatePrestamoFechaInicio(prestamo);
+                    prestamoDAO.updatePrestamoFechaFin(prestamo);
                 }
                 break;
             }
 
         } catch (Exception e) {
-            System.err.println("Préstamo no actualizado.");
+            System.err.println("Prestamo no actualizado.");
         }
     }
+
 
     // ==============================================
     // Metodos de Usuario

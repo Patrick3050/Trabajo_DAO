@@ -2,7 +2,6 @@ package dao.Interfaces;
 
 import model.Libro;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface LibroDAO {

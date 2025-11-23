@@ -61,7 +61,7 @@ public class AutorDAOImpl implements AutorDAO {
 
         while (rs.next()) {
             int id = rs.getInt("id");
-            String titulo = rs.getString("titulo");
+            String titulo = rs.getString("nombre");
             autors.add(new Autor(id, titulo));
         }
 

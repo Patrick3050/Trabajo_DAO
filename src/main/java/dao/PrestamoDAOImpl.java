@@ -23,7 +23,11 @@ public class PrestamoDAOImpl implements PrestamoDAO {
 
     @Override
     public void addPrestamo(Prestamo prestamo) throws Exception {
-        String sql = "INSERT INTO Prestamo (fechaInicio, fechaFin) VALUES (\"" + prestamo.getFechaInicio() + "\", \"" + prestamo.getFechaFin() + "\")";
+        String sql = "INSERT INTO Prestamo (fechaInicio, fechaFin, usuarioId, libroId) VALUES (\"" +
+                prestamo.getFechaInicio() + "\", \"" +
+                prestamo.getFechaFin() + "\", " +
+                prestamo.getUsuarioId() + ", " +
+                prestamo.getLibroId() + ")";
         st.executeUpdate(sql);
         System.out.println("CORRECTO: prestamo insertado");
     }
@@ -40,24 +44,36 @@ public class PrestamoDAOImpl implements PrestamoDAO {
         String sql = "SELECT * FROM Prestamo WHERE id = " + id;
         ResultSet rs = st.executeQuery(sql);
         Prestamo prestamo = null;
+
         while (rs.next()) {
-            prestamo = new Prestamo(rs.getInt("id"), rs.getString("fechaInicio"), rs.getString("fechaFin"));
+            prestamo = new Prestamo(
+                    rs.getInt("id"),
+                    rs.getString("fechaInicio"),
+                    rs.getString("fechaFin"),
+                    rs.getInt("usuarioId"),
+                    rs.getInt("libroId")
+            );
         }
+
         return prestamo;
     }
 
     @Override
     public ArrayList<Prestamo> getPrestamos() throws Exception {
         ArrayList<Prestamo> prestamos = new ArrayList<>();
-        String sql = "SELECT * FROM Usuario";
+        String sql = "SELECT * FROM Prestamo";
         ResultSet rs = st.executeQuery(sql);
 
         while (rs.next()) {
             int id = rs.getInt("id");
             String fechaInicio = rs.getString("fechaInicio");
             String fechaFin = rs.getString("fechaFin");
-            prestamos.add(new Prestamo(id, fechaInicio, fechaFin));
+            int usuarioId = rs.getInt("usuarioId");
+            int libroId = rs.getInt("libroId");
+
+            prestamos.add(new Prestamo(id, fechaInicio, fechaFin, usuarioId, libroId));
         }
+
         return prestamos;
     }
 
