@@ -64,14 +64,14 @@ public class LibroDAOImpl implements LibroDAO {
 
     @Override
     public void updateLibroTitulo(Libro libro) throws Exception {
-        String sql = "UPDATE Libro SET titulo = " + libro.getTitulo() + " WHERE id = " + libro.getId();
+        String sql = "UPDATE Libro SET titulo = '" + libro.getTitulo() + "' WHERE id = " + libro.getId();
         st.executeUpdate(sql);
         System.out.println("CORRECTO: libro actualizado");
     }
 
     @Override
     public void updateLibroIsbn(Libro libro) throws Exception {
-        String sql = "UPDATE Libro SET isbn = " + libro.getIsbn() + " WHERE id = " + libro.getId();
+        String sql = "UPDATE Libro SET isbn = '" + libro.getIsbn() + "' WHERE id = " + libro.getId();
         st.executeUpdate(sql);
         System.out.println("CORRECTO: libro actualizado");
     }
