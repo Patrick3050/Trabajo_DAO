@@ -89,7 +89,7 @@ public class Main {
                                    4. Eliminar
                                    0. Salir
                                   ---------------------------
-                                  Elige una tabla:
+                                  Elige una opción:
                                   """, nombreTabla);
                         }
 
