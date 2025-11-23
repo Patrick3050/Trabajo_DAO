@@ -125,7 +125,7 @@ public class BibliotecaService {
                 System.out.println(autor);
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Autores no encontrados.");
         }
     }
 

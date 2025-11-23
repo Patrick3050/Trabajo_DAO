@@ -18,10 +18,10 @@ public class ConnectionManager {
 
             return con;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.err.println("❌ ERROR: No se pudo establecer la conexión a la base de datos.");
+            // **Lanzar una RuntimeException para detener la ejecución y propagar el error**
+            throw new RuntimeException();
         }
 
     }
-
-
 }

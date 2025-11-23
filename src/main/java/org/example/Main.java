@@ -12,15 +12,27 @@ public class Main {
         Scanner t = new Scanner(System.in);
         int opcion;
 
-        // Crear DAOs (implementaciones concretas)
-        AutorDAO autorDAO = new AutorDAOImpl();
-        LibroDAO libroDAO = new LibroDAOImpl();
-        UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
-        PrestamoDAO prestamoDAO = new PrestamoDAOImpl();
-        LibroAutorDAO libroAutorDAO = new LibroAutorDAOImpl();
+
+        // Crear DAO's (implementaciones concretas)
+        AutorDAO autorDAO;
+        LibroDAO libroDAO;
+        UsuarioDAO usuarioDAO;
+        PrestamoDAO prestamoDAO;
+        LibroAutorDAO libroAutorDAO;
 
         // Crear el servicio
-        BibliotecaService service = new BibliotecaService(autorDAO, libroDAO, usuarioDAO, prestamoDAO, libroAutorDAO);
+        BibliotecaService service;
+        try {
+            autorDAO = new AutorDAOImpl();
+            libroDAO = new LibroDAOImpl();
+            usuarioDAO = new UsuarioDAOImpl();
+            prestamoDAO = new PrestamoDAOImpl();
+            libroAutorDAO = new LibroAutorDAOImpl();
+            service = new BibliotecaService(autorDAO, libroDAO, usuarioDAO, prestamoDAO, libroAutorDAO);
+        } catch (ExceptionInInitializerError e) {
+            return;
+        }
+
 
         boolean salir = false;
         while (!salir){
@@ -72,13 +84,15 @@ public class Main {
                     case 17 -> service.mostrarUsuarios();
                     case 18 -> service.actualizarUsuario();
                     case 19 -> service.eliminarUsuario();
-                    case 0 -> System.out.println("Saliendo del programa...");
+                    case 0 -> {
+                        System.out.println("Saliendo del programa...");
+                        salir = true;
+                    }
                     default -> System.err.println("Opcion incorrecta.\n");
                 }
-
             } catch (InputMismatchException e) {
+                t.next();
                 System.err.println("Solo se acepta números, y no se aceptan números tan largos.\n");
-                salir = true;
             }
             System.out.println();
         }
