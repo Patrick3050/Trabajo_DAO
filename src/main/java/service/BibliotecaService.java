@@ -1,6 +1,5 @@
 package service;
 
-import dao.ConnectionManager;
 import dao.Interfaces.*;
 import model.*;
 
@@ -38,7 +37,7 @@ public class BibliotecaService {
             Libro libro = new Libro(0, titulo, isbn);
             libroDAO.addLibro(libro);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Libro no agregado.");
         }
     }
 
@@ -50,7 +49,7 @@ public class BibliotecaService {
                 System.out.println(libro);
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Libros no encontrados.");
         }
     }
 
@@ -62,7 +61,7 @@ public class BibliotecaService {
             int id = Integer.parseInt(idAux);
             libroDAO.deleteLibro(id);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Libro no eliminado.");
         }
     }
 
@@ -98,7 +97,7 @@ public class BibliotecaService {
             }
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Libro no actualizado.");
         }
     }
 
@@ -113,7 +112,7 @@ public class BibliotecaService {
             Autor autor = new Autor(0, nombre);
             autorDAO.addAutor(autor);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Autor no agregado.");
         }
     }
 
@@ -137,7 +136,7 @@ public class BibliotecaService {
             int id = Integer.parseInt(idAux);
             autorDAO.deleteAutor(id);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Autor no eliminado.");
         }
     }
 
@@ -154,7 +153,7 @@ public class BibliotecaService {
             autorDAO.updateAutor(autor);
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Autor no actualizado.");
         }
     }
 
@@ -176,7 +175,7 @@ public class BibliotecaService {
             LibroAutor libroAutor = new LibroAutor(idLibro, idAutor);
             libroAutorDAO.addLibroAutor(libroAutor);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Libro-autor no agregado.");
         }
     }
 
@@ -188,7 +187,7 @@ public class BibliotecaService {
                 System.out.println(libroAutor);
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Libros-autores no encontrados.");
         }
     }
 
@@ -204,7 +203,7 @@ public class BibliotecaService {
             int idAutor = Integer.parseInt(idAutorAux);
             libroAutorDAO.deleteLibroAutor(idLibro, idAutor);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Libro-autor no eliminado.");
         }
     }
 
@@ -221,7 +220,7 @@ public class BibliotecaService {
             Prestamo prestamo = new Prestamo(0, fechaInicio, fechaFin);
             prestamoDAO.addPrestamo(prestamo);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Préstamo no agregado.");
         }
     }
 
@@ -233,7 +232,7 @@ public class BibliotecaService {
                 System.out.println(prestamo);
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Préstamos no encontrados.");
         }
     }
 
@@ -245,7 +244,7 @@ public class BibliotecaService {
             int id = Integer.parseInt(idAux);
             prestamoDAO.deletePrestamo(id);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Préstamo no eliminado.");
         }
     }
 
@@ -281,7 +280,7 @@ public class BibliotecaService {
             }
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Préstamo no actualizado.");
         }
     }
 
@@ -296,7 +295,7 @@ public class BibliotecaService {
             Usuario usuario = new Usuario(nombre, 0);
             usuarioDAO.addUsuario(usuario);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Usuario no agregado.");
         }
     }
 
@@ -308,7 +307,7 @@ public class BibliotecaService {
                 System.out.println(usuario);
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Usuarios no encontrados.");
         }
     }
 
@@ -320,7 +319,7 @@ public class BibliotecaService {
             int id = Integer.parseInt(idAux);
             usuarioDAO.deleteUsuario(id);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Autor no eliminado.");
         }
     }
 
@@ -337,7 +336,7 @@ public class BibliotecaService {
             usuarioDAO.updateUsuario(usuario);
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Usuario no actualizado.");
         }
     }
 
